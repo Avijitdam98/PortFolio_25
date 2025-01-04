@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaLinkedin, FaGithub, FaTwitter, FaDiscord } from 'react-icons/fa';
+import {
+  FaEnvelope,
+  FaPhone,
+  FaMapMarkerAlt,
+  FaLinkedin,
+  FaGithub,
+  FaTwitter,
+  FaDiscord,
+} from 'react-icons/fa';
 import { BiSend, BiRightArrowAlt } from 'react-icons/bi';
 import { HiSparkles } from 'react-icons/hi';
 import '../styles/components/Contact.scss';
@@ -10,24 +18,24 @@ const Contact = () => {
     name: '',
     email: '',
     subject: '',
-    message: ''
+    message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
   const [activeField, setActiveField] = useState(null);
 
-  const handleInputChange = (e) => {
+  const handleInputChange = e => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     try {
       await new Promise(resolve => setTimeout(resolve, 2000));
       setSubmitStatus('success');
@@ -46,22 +54,22 @@ const Contact = () => {
       title: 'Email',
       value: 'avijit.dam9@gmail.com',
       link: 'mailto:avijit.dam9@gmail.com',
-      gradient: 'blue'
+      gradient: 'blue',
     },
     {
       icon: <FaPhone />,
       title: 'Phone',
       value: '+919593189913',
       link: 'tel:+1234567890',
-      gradient: 'purple'
+      gradient: 'purple',
     },
     {
       icon: <FaMapMarkerAlt />,
       title: 'Location',
       value: 'City, India',
       link: 'https://maps.google.com',
-      gradient: 'green'
-    }
+      gradient: 'green',
+    },
   ];
 
   const socialLinks = [
@@ -69,26 +77,26 @@ const Contact = () => {
       icon: <FaLinkedin />,
       url: 'https://linkedin.com/in/yourusername',
       label: 'LinkedIn',
-      color: '#0077b5'
+      color: '#0077b5',
     },
     {
       icon: <FaGithub />,
       url: 'https://github.com/yourusername',
       label: 'GitHub',
-      color: '#333'
+      color: '#333',
     },
     {
       icon: <FaTwitter />,
       url: 'https://twitter.com/yourusername',
       label: 'Twitter',
-      color: '#1da1f2'
+      color: '#1da1f2',
     },
     {
       icon: <FaDiscord />,
       url: 'https://discord.gg/yourusername',
       label: 'Discord',
-      color: '#7289da'
-    }
+      color: '#7289da',
+    },
   ];
 
   const containerVariants = {
@@ -97,9 +105,9 @@ const Contact = () => {
       opacity: 1,
       transition: {
         staggerChildren: 0.1,
-        delayChildren: 0.2
-      }
-    }
+        delayChildren: 0.2,
+      },
+    },
   };
 
   const itemVariants = {
@@ -110,9 +118,9 @@ const Contact = () => {
       transition: {
         type: 'spring',
         stiffness: 100,
-        damping: 15
-      }
-    }
+        damping: 15,
+      },
+    },
   };
 
   const sparkleVariants = {
@@ -123,9 +131,9 @@ const Contact = () => {
       transition: {
         duration: 1.5,
         repeat: Infinity,
-        repeatType: 'reverse'
-      }
-    }
+        repeatType: 'reverse',
+      },
+    },
   };
 
   return (
@@ -138,19 +146,19 @@ const Contact = () => {
             animate={{
               x: [0, Math.random() * 100 - 50],
               y: [0, Math.random() * 100 - 50],
-              rotate: [0, 360]
+              rotate: [0, 360],
             }}
             transition={{
               duration: Math.random() * 5 + 5,
               repeat: Infinity,
               repeatType: 'reverse',
-              ease: 'linear'
+              ease: 'linear',
             }}
           />
         ))}
       </div>
 
-      <motion.div 
+      <motion.div
         className="section-header"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -172,7 +180,7 @@ const Contact = () => {
       </motion.div>
 
       <div className="contact-container">
-        <motion.div 
+        <motion.div
           className="contact-info"
           variants={containerVariants}
           initial="hidden"
@@ -185,18 +193,16 @@ const Contact = () => {
               href={info.link}
               className={`info-card ${info.gradient}`}
               variants={itemVariants}
-              whileHover={{ 
+              whileHover={{
                 scale: 1.05,
-                transition: { type: 'spring', stiffness: 300 }
+                transition: { type: 'spring', stiffness: 300 },
               }}
               whileTap={{ scale: 0.95 }}
               target={info.title === 'Location' ? '_blank' : undefined}
               rel={info.title === 'Location' ? 'noopener noreferrer' : undefined}
             >
               <div className="card-content">
-                <div className="icon-wrapper">
-                  {info.icon}
-                </div>
+                <div className="icon-wrapper">{info.icon}</div>
                 <div className="info-content">
                   <h3>{info.title}</h3>
                   <p>{info.value}</p>
@@ -206,23 +212,20 @@ const Contact = () => {
             </motion.a>
           ))}
 
-          <motion.div 
-            className="social-links"
-            variants={itemVariants}
-          >
+          <motion.div className="social-links" variants={itemVariants}>
             <h3>Connect With Me</h3>
             <div className="social-icons">
-              {socialLinks.map((social) => (
+              {socialLinks.map(social => (
                 <motion.a
                   key={social.label}
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{ '--hover-color': social.color }}
-                  whileHover={{ 
+                  whileHover={{
                     scale: 1.2,
                     rotate: 5,
-                    backgroundColor: social.color 
+                    backgroundColor: social.color,
                   }}
                   whileTap={{ scale: 0.9 }}
                 >
@@ -234,7 +237,7 @@ const Contact = () => {
           </motion.div>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           className="contact-form-container"
           variants={containerVariants}
           initial="hidden"
@@ -245,9 +248,9 @@ const Contact = () => {
             {[
               { name: 'name', type: 'text', placeholder: 'Your Name' },
               { name: 'email', type: 'email', placeholder: 'Your Email' },
-              { name: 'subject', type: 'text', placeholder: 'Subject' }
-            ].map((field) => (
-              <motion.div 
+              { name: 'subject', type: 'text', placeholder: 'Subject' },
+            ].map(field => (
+              <motion.div
                 key={field.name}
                 className={`form-group ${activeField === field.name ? 'active' : ''}`}
                 variants={itemVariants}
@@ -266,7 +269,7 @@ const Contact = () => {
               </motion.div>
             ))}
 
-            <motion.div 
+            <motion.div
               className={`form-group ${activeField === 'message' ? 'active' : ''}`}
               variants={itemVariants}
             >
@@ -287,9 +290,9 @@ const Contact = () => {
               type="submit"
               className={`submit-button ${isSubmitting ? 'submitting' : ''}`}
               variants={itemVariants}
-              whileHover={{ 
+              whileHover={{
                 scale: 1.05,
-                boxShadow: '0 5px 15px rgba(0,0,0,0.2)'
+                boxShadow: '0 5px 15px rgba(0,0,0,0.2)',
               }}
               whileTap={{ scale: 0.95 }}
               disabled={isSubmitting}
@@ -312,11 +315,9 @@ const Contact = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
               >
-                {submitStatus === 'success' ? (
-                  'Message sent successfully! ✨'
-                ) : (
-                  'Failed to send message. Please try again. 🙁'
-                )}
+                {submitStatus === 'success'
+                  ? 'Message sent successfully! ✨'
+                  : 'Failed to send message. Please try again. 🙁'}
               </motion.div>
             )}
           </AnimatePresence>

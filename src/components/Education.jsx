@@ -1,5 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { FaGraduationCap, FaCalendarAlt, FaUniversity, FaCode, FaStar, FaTrophy, FaBook, FaChevronDown } from 'react-icons/fa';
+import {
+  FaGraduationCap,
+  FaCalendarAlt,
+  FaUniversity,
+  FaCode,
+  FaStar,
+  FaTrophy,
+  FaBook,
+  FaChevronDown,
+} from 'react-icons/fa';
 import '../styles/components/Education.scss';
 
 const Education = () => {
@@ -30,66 +39,62 @@ const Education = () => {
     };
   }, []);
 
-  const toggleDetails = (index) => {
+  const toggleDetails = index => {
     setExpandedDetails(prev => ({
       ...prev,
-      [index]: !prev[index]
+      [index]: !prev[index],
     }));
   };
 
   const educationData = [
     {
-      degree: "Master of Computer Application (MCA)",
-      institution: "Brainware University",
-      duration: "2021 - 2023",
-      grade: "8.5 CGPA",
-      location: "Kolkata, India",
-      achievements: [
-        "Department Rank Holder",
-        "Research Paper Publication",
-        "Best Project Award"
-      ],
+      degree: 'Master of Computer Application (MCA)',
+      institution: 'Brainware University',
+      duration: '2021 - 2023',
+      grade: '8.5 CGPA',
+      location: 'Kolkata, India',
+      achievements: ['Department Rank Holder', 'Research Paper Publication', 'Best Project Award'],
       details: [
-        "Specialized in Advanced Software Development",
-        "Key courses: Advanced Algorithms, Cloud Computing, AI & ML",
-        "Research focus on Modern Web Technologies"
+        'Specialized in Advanced Software Development',
+        'Key courses: Advanced Algorithms, Cloud Computing, AI & ML',
+        'Research focus on Modern Web Technologies',
       ],
       skills: [
-        "Machine Learning",
-        "Cloud Computing",
-        "Advanced Algorithms",
-        "Software Architecture"
-      ]
+        'Machine Learning',
+        'Cloud Computing',
+        'Advanced Algorithms',
+        'Software Architecture',
+      ],
     },
     {
-      degree: "Bachelor of Computer Application (BCA)",
-      institution: "Brainware University",
-      duration: "2018 - 2021",
-      grade: "8.2 CGPA",
-      location: "Kolkata, India",
+      degree: 'Bachelor of Computer Application (BCA)',
+      institution: 'Brainware University',
+      duration: '2018 - 2021',
+      grade: '8.2 CGPA',
+      location: 'Kolkata, India',
       achievements: [
-        "Academic Excellence Award",
-        "Coding Competition Winner",
-        "Technical Club Lead"
+        'Academic Excellence Award',
+        'Coding Competition Winner',
+        'Technical Club Lead',
       ],
       details: [
-        "Foundation in Computer Science & Programming",
-        "Core subjects: Data Structures, Database Management, Web Development",
-        "Participated in multiple coding competitions"
+        'Foundation in Computer Science & Programming',
+        'Core subjects: Data Structures, Database Management, Web Development',
+        'Participated in multiple coding competitions',
       ],
       skills: [
-        "Data Structures",
-        "Web Development",
-        "Database Management",
-        "Programming Fundamentals"
-      ]
-    }
+        'Data Structures',
+        'Web Development',
+        'Database Management',
+        'Programming Fundamentals',
+      ],
+    },
   ];
 
   return (
-    <section 
+    <section
       ref={sectionRef}
-      className={`education-section ${isVisible ? 'visible' : ''}`} 
+      className={`education-section ${isVisible ? 'visible' : ''}`}
       id="education"
       aria-label="Education Section"
     >
@@ -104,7 +109,7 @@ const Education = () => {
 
         <div className="education-timeline" role="list">
           {educationData.map((edu, index) => (
-            <div 
+            <div
               className={`education-card ${activeCard === index ? 'active' : ''} ${expandedDetails[index] ? 'expanded' : ''}`}
               key={index}
               onMouseEnter={() => setActiveCard(index)}
@@ -135,8 +140,8 @@ const Education = () => {
                     <span>{edu.duration}</span>
                   </div>
                 </div>
-                <div 
-                  className="grade" 
+                <div
+                  className="grade"
                   aria-label={`Grade: ${edu.grade}`}
                   title={`Grade: ${edu.grade}`}
                 >
@@ -152,12 +157,7 @@ const Education = () => {
                     Achievements
                   </h4>
                   {edu.achievements.map((achievement, i) => (
-                    <div 
-                      key={i} 
-                      role="listitem" 
-                      className="achievement-item"
-                      title={achievement}
-                    >
+                    <div key={i} role="listitem" className="achievement-item" title={achievement}>
                       <FaTrophy aria-hidden="true" className="achievement-icon" />
                       <span>{achievement}</span>
                     </div>
@@ -170,12 +170,7 @@ const Education = () => {
                     Course Details
                   </h4>
                   {edu.details.map((detail, i) => (
-                    <div 
-                      key={i} 
-                      role="listitem" 
-                      className="detail-item"
-                      title={detail}
-                    >
+                    <div key={i} role="listitem" className="detail-item" title={detail}>
                       <FaBook aria-hidden="true" className="detail-icon" />
                       <span>{detail}</span>
                     </div>
@@ -188,12 +183,7 @@ const Education = () => {
                     Key Skills
                   </h4>
                   {edu.skills.map((skill, i) => (
-                    <div 
-                      key={i} 
-                      role="listitem" 
-                      className="skill-item"
-                      title={skill}
-                    >
+                    <div key={i} role="listitem" className="skill-item" title={skill}>
                       <FaCode aria-hidden="true" className="skill-icon" />
                       <span>{skill}</span>
                     </div>
@@ -205,7 +195,7 @@ const Education = () => {
                 className="expand-button"
                 onClick={() => toggleDetails(index)}
                 aria-expanded={expandedDetails[index]}
-                aria-label={expandedDetails[index] ? "Show less details" : "Show more details"}
+                aria-label={expandedDetails[index] ? 'Show less details' : 'Show more details'}
               >
                 <FaChevronDown className={expandedDetails[index] ? 'rotated' : ''} />
               </button>

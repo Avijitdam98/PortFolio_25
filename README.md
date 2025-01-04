@@ -1,48 +1,90 @@
-# Astro Starter Kit: Basics
+# Avijit Dam Portfolio
 
-```sh
-npm create astro@latest -- --template basics
+A modern, responsive portfolio website built with Astro and React, showcasing my professional journey, skills, and projects.
+
+## 🚀 Features
+
+- **Modern UI/UX**: Clean and intuitive interface with smooth animations
+- **Responsive Design**: Optimized for all device sizes
+- **Performance Focused**: Built with Astro for optimal loading speeds
+- **Interactive Elements**: Dynamic components using React and Framer Motion
+- **Contact Form**: Integrated with EmailJS for seamless communication
+- **Dark Mode**: Support for light and dark themes
+- **SEO Optimized**: Meta tags and semantic HTML for better search engine visibility
+
+## 🛠️ Tech Stack
+
+- **Framework**: [Astro](https://astro.build/)
+- **Frontend Library**: [React](https://reactjs.org/)
+- **Styling**: [SASS](https://sass-lang.com/)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **Icons**: [React Icons](https://react-icons.github.io/react-icons/)
+- **Email Service**: [EmailJS](https://www.emailjs.com/)
+- **Maps**: [Google Maps API](https://developers.google.com/maps)
+
+## 🚀 Getting Started
+
+1. **Clone the repository**
+
+   ```bash
+   git clone https://github.com/Avijitdam98/PortFolio_25.git
+   cd PortFolio_25
+   ```
+
+2. **Install dependencies**
+
+   ```bash
+   npm install
+   ```
+
+3. **Start development server**
+
+   ```bash
+   npm run dev
+   ```
+
+4. **Build for production**
+   ```bash
+   npm run build
+   ```
+
+## 🧪 Quality Assurance
+
+- **Linting**: ESLint with React and TypeScript configurations
+- **Code Formatting**: Prettier for consistent code style
+- **Git Hooks**: Husky for pre-commit checks
+- **Testing**: Jest and React Testing Library
+
+## 📁 Project Structure
+
+```
+src/
+├── components/     # React components
+├── layouts/        # Astro layouts
+├── pages/          # Astro pages
+├── styles/         # SCSS styles
+├── hooks/          # Custom React hooks
+├── context/        # React context
+├── config/         # Configuration files
+└── assets/         # Static assets
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+## 🤝 Contributing
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-## 🚀 Project Structure
+## 📝 License
 
-Inside of your Astro project, you'll see the following folders and files:
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+## 📧 Contact
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+Avijit Dam - [avijit.dam9@gmail.com](mailto:avijit.dam9@gmail.com)
 
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Project Link: [https://github.com/Avijitdam98/PortFolio_25](https://github.com/Avijitdam98/PortFolio_25)

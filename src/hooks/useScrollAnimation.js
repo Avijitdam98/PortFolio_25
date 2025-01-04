@@ -13,13 +13,13 @@ const useScrollAnimation = () => {
     const updateScrollDirection = () => {
       const currentScrollY = window.scrollY;
       setScrollY(currentScrollY);
-      
+
       if (currentScrollY > lastScrollY) {
         setScrollDirection('down');
       } else if (currentScrollY < lastScrollY) {
         setScrollDirection('up');
       }
-      
+
       lastScrollY = currentScrollY;
       ticking = false;
 

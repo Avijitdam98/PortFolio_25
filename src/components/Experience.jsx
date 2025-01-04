@@ -14,9 +14,9 @@ const experienceData = [
       'Architected and implemented scalable microservices using Node.js and Python',
       'Led a team of 5 developers and managed project deliverables',
       'Improved application performance by 40% through optimization',
-      'Implemented CI/CD pipelines and automated testing workflows'
+      'Implemented CI/CD pipelines and automated testing workflows',
     ],
-    technologies: ['React', 'Node.js', 'Python', 'AWS', 'Docker']
+    technologies: ['React', 'Node.js', 'Python', 'AWS', 'Docker'],
   },
   {
     role: 'Frontend Developer',
@@ -28,34 +28,34 @@ const experienceData = [
       'Built reusable component library used across multiple projects',
       'Implemented responsive designs and animations',
       'Optimized frontend performance and loading times',
-      'Collaborated with UX team on design implementation'
+      'Collaborated with UX team on design implementation',
     ],
-    technologies: ['React', 'TypeScript', 'SCSS', 'Redux']
-  }
+    technologies: ['React', 'TypeScript', 'SCSS', 'Redux'],
+  },
 ];
 
 const techWebsites = {
-  'React': 'https://reactjs.org',
+  React: 'https://reactjs.org',
   'Node.js': 'https://nodejs.org',
-  'Python': 'https://python.org',
-  'AWS': 'https://aws.amazon.com',
-  'Docker': 'https://docker.com',
-  'TypeScript': 'https://typescriptlang.org',
-  'SCSS': 'https://sass-lang.com',
-  'Redux': 'https://redux.js.org'
+  Python: 'https://python.org',
+  AWS: 'https://aws.amazon.com',
+  Docker: 'https://docker.com',
+  TypeScript: 'https://typescriptlang.org',
+  SCSS: 'https://sass-lang.com',
+  Redux: 'https://redux.js.org',
 };
 
 const Experience = () => {
   const [activeCard, setActiveCard] = useState(null);
   const [hoveredTech, setHoveredTech] = useState(null);
 
-  const handleTechClick = (tech) => {
+  const handleTechClick = tech => {
     window.open(techWebsites[tech], '_blank', 'noopener,noreferrer');
   };
 
   const cardVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 }
+    visible: { opacity: 1, y: 0 },
   };
 
   const containerVariants = {
@@ -63,20 +63,20 @@ const Experience = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2
-      }
-    }
+        staggerChildren: 0.2,
+      },
+    },
   };
 
   const highlightVariants = {
     hidden: { opacity: 0, scale: 0.8 },
-    visible: { opacity: 1, scale: 1 }
+    visible: { opacity: 1, scale: 1 },
   };
 
   return (
     <section id="experience" className="experience-section">
       <div className="container">
-        <motion.div 
+        <motion.div
           className="section-header"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -100,7 +100,7 @@ const Experience = () => {
               className={`experience-card ${activeCard === index ? 'active' : ''}`}
               variants={cardVariants}
             >
-              <div 
+              <div
                 className="card-header"
                 onClick={() => setActiveCard(activeCard === index ? null : index)}
               >
@@ -120,7 +120,7 @@ const Experience = () => {
                     <span>{exp.duration}</span>
                   </div>
                 </div>
-                <motion.div 
+                <motion.div
                   className="expand-icon"
                   animate={{ rotate: activeCard === index ? 180 : 0 }}
                   transition={{ duration: 0.3 }}
@@ -138,16 +138,13 @@ const Experience = () => {
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <motion.div 
-                      className="highlight-box"
-                      variants={highlightVariants}
-                    >
+                    <motion.div className="highlight-box" variants={highlightVariants}>
                       <FaLightbulb className="highlight-icon" />
                       <span>{exp.highlight}</span>
                     </motion.div>
 
                     <p className="description">{exp.description}</p>
-                    
+
                     <ul className="responsibilities">
                       {exp.responsibilities.map((resp, idx) => (
                         <motion.li

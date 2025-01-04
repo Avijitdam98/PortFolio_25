@@ -10,7 +10,7 @@ const GitHubActivity = () => {
     contributions: null,
     repos: [],
     loading: true,
-    error: null
+    error: null,
   });
 
   const [scrollDirection, setScrollDirection] = useState('none');
@@ -18,23 +18,15 @@ const GitHubActivity = () => {
   const controls = useAnimation();
   const [ref, inView] = useInView({
     threshold: 0.2,
-    triggerOnce: false
+    triggerOnce: false,
   });
 
   const { scrollY } = useScroll();
   const y = useSpring(scrollY, { stiffness: 100, damping: 30 });
 
-  const opacity = useTransform(
-    y,
-    [0, 200, 300, 500],
-    [0.3, 0.5, 0.8, 1]
-  );
+  const opacity = useTransform(y, [0, 200, 300, 500], [0.3, 0.5, 0.8, 1]);
 
-  const scale = useTransform(
-    y,
-    [0, 200, 300, 500],
-    [0.8, 0.9, 0.95, 1]
-  );
+  const scale = useTransform(y, [0, 200, 300, 500], [0.8, 0.9, 0.95, 1]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -62,9 +54,9 @@ const GitHubActivity = () => {
       y: 0,
       transition: {
         duration: 0.6,
-        staggerChildren: 0.1
-      }
-    }
+        staggerChildren: 0.1,
+      },
+    },
   };
 
   const itemVariants = {
@@ -74,39 +66,41 @@ const GitHubActivity = () => {
       y: 0,
       transition: {
         duration: 0.5,
-        ease: [0.48, 0.15, 0.25, 0.96]
-      }
-    }
+        ease: [0.48, 0.15, 0.25, 0.96],
+      },
+    },
   };
 
   const cardVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: (index) => ({
+    visible: index => ({
       opacity: 1,
       y: 0,
       transition: {
         delay: index * 0.1,
         duration: 0.5,
-        ease: [0.48, 0.15, 0.25, 0.96]
-      }
-    })
+        ease: [0.48, 0.15, 0.25, 0.96],
+      },
+    }),
   };
 
   useEffect(() => {
     const username = 'Avijitdam98'; // Your GitHub username
-    
+
     // Fetch GitHub data
     const fetchGitHubData = async () => {
       try {
         setGithubData(prev => ({ ...prev, loading: true, error: null }));
-        
+
         // Fetch user's repositories
-        const reposResponse = await fetch(`https://api.github.com/users/${username}/repos?sort=stars&per_page=4`);
-        
+        const reposResponse = await fetch(
+          `https://api.github.com/users/${username}/repos?sort=stars&per_page=4`
+        );
+
         if (!reposResponse.ok) {
           throw new Error('Failed to fetch GitHub repositories');
         }
-        
+
         const reposData = await reposResponse.json();
 
         setGithubData(prev => ({
@@ -117,16 +111,16 @@ const GitHubActivity = () => {
             stars: repo.stargazers_count,
             forks: repo.forks_count,
             language: repo.language,
-            url: repo.html_url
+            url: repo.html_url,
           })),
-          loading: false
+          loading: false,
         }));
       } catch (error) {
         console.error('Error fetching GitHub data:', error);
         setGithubData(prev => ({
           ...prev,
           loading: false,
-          error: 'Failed to load GitHub data. Please try again later.'
+          error: 'Failed to load GitHub data. Please try again later.',
         }));
       }
     };
@@ -143,14 +137,11 @@ const GitHubActivity = () => {
       animate={controls}
       variants={containerVariants}
     >
-      <motion.div
-        className="section-title"
-        variants={itemVariants}
-      >
+      <motion.div className="section-title" variants={itemVariants}>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
         >
           GitHub Activity
         </motion.h2>
@@ -163,7 +154,7 @@ const GitHubActivity = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <img 
+          <img
             src={`https://ghchart.rshah.org/2563eb/Avijitdam98`}
             alt="GitHub Contributions Graph"
             className="contributions-img"
@@ -196,7 +187,7 @@ const GitHubActivity = () => {
                   variants={cardVariants}
                   whileHover={{
                     scale: 1.02,
-                    transition: { duration: 0.2 }
+                    transition: { duration: 0.2 },
                   }}
                   whileTap={{ scale: 0.98 }}
                 >
@@ -205,7 +196,7 @@ const GitHubActivity = () => {
                   <div className="repo-stats">
                     {repo.language && (
                       <span className="language">
-                        <span 
+                        <span
                           className="language-dot"
                           style={{ backgroundColor: getLanguageColor(repo.language) }}
                         />
@@ -230,7 +221,7 @@ const GitHubActivity = () => {
 };
 
 // Helper function to get language colors
-const getLanguageColor = (language) => {
+const getLanguageColor = language => {
   const colors = {
     JavaScript: '#f1e05a',
     TypeScript: '#2b7489',

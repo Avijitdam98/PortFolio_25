@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { 
-  faHome, 
-  faUser, 
-  faBriefcase, 
-  faCode, 
+import {
+  faHome,
+  faUser,
+  faBriefcase,
+  faCode,
   faEnvelope,
   faBars,
   faTimes,
   faSun,
-  faMoon
+  faMoon,
 } from '@fortawesome/free-solid-svg-icons';
 import '../styles/components/Navbar.scss';
 
@@ -32,7 +32,7 @@ const Navbar = ({ toggleTheme, isDarkTheme }) => {
     const handleScroll = () => {
       const currentScrollPos = window.scrollY;
       const sections = document.querySelectorAll('section[id]');
-      
+
       // Handle navbar visibility
       setVisible(prevScrollPos > currentScrollPos || currentScrollPos < 10);
       setPrevScrollPos(currentScrollPos);
@@ -51,7 +51,7 @@ const Navbar = ({ toggleTheme, isDarkTheme }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [prevScrollPos]);
 
-  const scrollToSection = (id) => {
+  const scrollToSection = id => {
     const element = document.getElementById(id);
     if (element) {
       const offset = 80;
@@ -60,7 +60,7 @@ const Navbar = ({ toggleTheme, isDarkTheme }) => {
 
       window.scrollTo({
         top: offsetPosition,
-        behavior: 'smooth'
+        behavior: 'smooth',
       });
     }
     setIsOpen(false);
@@ -69,27 +69,19 @@ const Navbar = ({ toggleTheme, isDarkTheme }) => {
   return (
     <>
       {/* Desktop Navigation */}
-      <motion.nav 
+      <motion.nav
         className="navbar desktop-nav"
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        transition={{ type: "spring", stiffness: 100 }}
+        transition={{ type: 'spring', stiffness: 100 }}
       >
         <div className="nav-content">
-          <motion.div 
-            className="logo"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-          >
+          <motion.div className="logo" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
             AD
           </motion.div>
           <ul className="nav-links">
-            {navItems.map((item) => (
-              <motion.li 
-                key={item.id}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-              >
+            {navItems.map(item => (
+              <motion.li key={item.id} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                 <button
                   className={activeSection === item.id ? 'active' : ''}
                   onClick={() => scrollToSection(item.id)}
@@ -98,15 +90,8 @@ const Navbar = ({ toggleTheme, isDarkTheme }) => {
                 </button>
               </motion.li>
             ))}
-            <motion.li 
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <button 
-                className="theme-toggle" 
-                onClick={toggleTheme}
-                aria-label="Toggle theme"
-              >
+            <motion.li whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+              <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
                 <FontAwesomeIcon icon={isDarkTheme ? faSun : faMoon} />
               </button>
             </motion.li>
@@ -115,14 +100,14 @@ const Navbar = ({ toggleTheme, isDarkTheme }) => {
       </motion.nav>
 
       {/* Mobile Navigation */}
-      <motion.nav 
+      <motion.nav
         className="navbar mobile-nav"
         initial={{ y: 100 }}
-        animate={{ 
+        animate={{
           y: visible ? 0 : 100,
-          opacity: visible ? 1 : 0
+          opacity: visible ? 1 : 0,
         }}
-        transition={{ type: "spring", stiffness: 100 }}
+        transition={{ type: 'spring', stiffness: 100 }}
       >
         <motion.button
           className="menu-toggle"
@@ -139,9 +124,9 @@ const Navbar = ({ toggleTheme, isDarkTheme }) => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 20 }}
-              transition={{ type: "spring", stiffness: 200 }}
+              transition={{ type: 'spring', stiffness: 200 }}
             >
-              {navItems.map((item) => (
+              {navItems.map(item => (
                 <motion.button
                   key={item.id}
                   className={`menu-item ${activeSection === item.id ? 'active' : ''}`}
@@ -158,7 +143,7 @@ const Navbar = ({ toggleTheme, isDarkTheme }) => {
         </AnimatePresence>
 
         <div className="mobile-bottom-nav">
-          {navItems.map((item) => (
+          {navItems.map(item => (
             <motion.button
               key={item.id}
               className={`nav-item ${activeSection === item.id ? 'active' : ''}`}

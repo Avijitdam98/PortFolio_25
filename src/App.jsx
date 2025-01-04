@@ -17,7 +17,7 @@ const App = () => {
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
-    restDelta: 0.001
+    restDelta: 0.001,
   });
 
   useEffect(() => {
@@ -41,10 +41,7 @@ const App = () => {
 
   return (
     <>
-      <motion.div
-        className="progress-bar"
-        style={{ scaleX }}
-      />
+      <motion.div className="progress-bar" style={{ scaleX }} />
       <div className="app">
         <Navbar />
         <main className="main-content">

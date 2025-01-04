@@ -1,6 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useAnimation } from 'framer-motion';
-import { FaGithub, FaExternalLinkAlt, FaCode, FaStar, FaCodeBranch, FaLightbulb, FaTools, FaChevronRight } from 'react-icons/fa';
+import {
+  FaGithub,
+  FaExternalLinkAlt,
+  FaCode,
+  FaStar,
+  FaCodeBranch,
+  FaLightbulb,
+  FaTools,
+  FaChevronRight,
+} from 'react-icons/fa';
 import '../styles/components/Projects.scss';
 
 const projectsData = [
@@ -15,24 +24,20 @@ const projectsData = [
     highlights: [
       'Implemented real-time updates using WebSocket',
       'Reduced loading time by 60%',
-      'Integrated CI/CD pipeline'
+      'Integrated CI/CD pipeline',
     ],
     metrics: {
       stars: 48,
       forks: 12,
       language: 'TypeScript',
-      lastUpdated: '2 days ago'
+      lastUpdated: '2 days ago',
     },
-    features: [
-      'Real-time collaboration',
-      'Responsive design',
-      'OAuth integration',
-      'REST API'
-    ]
+    features: ['Real-time collaboration', 'Responsive design', 'OAuth integration', 'REST API'],
   },
   {
     title: 'E-Commerce Platform',
-    description: 'A full-stack e-commerce platform with real-time inventory management and payment processing.',
+    description:
+      'A full-stack e-commerce platform with real-time inventory management and payment processing.',
     image: '/images/projects/ecommerce.svg',
     category: 'Full Stack',
     technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
@@ -41,20 +46,20 @@ const projectsData = [
     highlights: [
       'Implemented real-time inventory management',
       'Integrated payment processing using Stripe',
-      'Improved user experience with responsive design'
+      'Improved user experience with responsive design',
     ],
     metrics: {
       stars: 100,
       forks: 20,
       language: 'JavaScript',
-      lastUpdated: '1 week ago'
+      lastUpdated: '1 week ago',
     },
     features: [
       'Real-time inventory management',
       'Payment processing integration',
       'Responsive design',
-      'REST API'
-    ]
+      'REST API',
+    ],
   },
   {
     title: 'AI Image Generator',
@@ -67,20 +72,15 @@ const projectsData = [
     highlights: [
       'Implemented AI model using TensorFlow',
       'Integrated user input interface using React',
-      'Improved image generation speed by 50%'
+      'Improved image generation speed by 50%',
     ],
     metrics: {
       stars: 50,
       forks: 10,
       language: 'Python',
-      lastUpdated: '2 weeks ago'
+      lastUpdated: '2 weeks ago',
     },
-    features: [
-      'AI model integration',
-      'User input interface',
-      'Image generation',
-      'REST API'
-    ]
+    features: ['AI model integration', 'User input interface', 'Image generation', 'REST API'],
   },
   {
     title: 'Task Management App',
@@ -93,21 +93,16 @@ const projectsData = [
     highlights: [
       'Implemented real-time updates using Firebase',
       'Integrated team features using Material-UI',
-      'Improved user experience with responsive design'
+      'Improved user experience with responsive design',
     ],
     metrics: {
       stars: 200,
       forks: 30,
       language: 'JavaScript',
-      lastUpdated: '1 month ago'
+      lastUpdated: '1 month ago',
     },
-    features: [
-      'Real-time updates',
-      'Team features',
-      'Responsive design',
-      'REST API'
-    ]
-  }
+    features: ['Real-time updates', 'Team features', 'Responsive design', 'REST API'],
+  },
 ];
 
 const categories = ['All', 'Full Stack', 'Web App', 'AI/ML'];
@@ -119,8 +114,8 @@ const Projects = () => {
   const [isDetailView, setIsDetailView] = useState(false);
   const controls = useAnimation();
 
-  const filteredProjects = projectsData.filter(project => 
-    selectedCategory === 'All' || project.category === selectedCategory
+  const filteredProjects = projectsData.filter(
+    project => selectedCategory === 'All' || project.category === selectedCategory
   );
 
   useEffect(() => {
@@ -132,38 +127,38 @@ const Projects = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1
-      }
-    }
+        staggerChildren: 0.1,
+      },
+    },
   };
 
   const projectVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       transition: {
         type: 'spring',
         stiffness: 100,
-        damping: 15
-      }
-    }
+        damping: 15,
+      },
+    },
   };
 
   const overlayVariants = {
     hidden: { opacity: 0, scale: 0.8 },
-    visible: { 
+    visible: {
       opacity: 1,
       scale: 1,
       transition: {
         type: 'spring',
         stiffness: 200,
-        damping: 20
-      }
-    }
+        damping: 20,
+      },
+    },
   };
 
-  const handleProjectClick = (project) => {
+  const handleProjectClick = project => {
     setSelectedProject(project);
     setIsDetailView(true);
   };
@@ -171,7 +166,7 @@ const Projects = () => {
   return (
     <section id="projects" className="projects-section">
       <div className="container">
-        <motion.div 
+        <motion.div
           className="section-header"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -227,14 +222,14 @@ const Projects = () => {
               >
                 <div className="project-image">
                   <img src={project.image} alt={project.title} />
-                  <motion.div 
+                  <motion.div
                     className="project-overlay"
                     variants={overlayVariants}
                     initial="hidden"
-                    animate={hoveredProject === project.title ? "visible" : "hidden"}
+                    animate={hoveredProject === project.title ? 'visible' : 'hidden'}
                   >
                     <div className="overlay-content">
-                      <motion.div 
+                      <motion.div
                         className="tech-stack"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -247,16 +242,26 @@ const Projects = () => {
                           </span>
                         ))}
                       </motion.div>
-                      <motion.div 
+                      <motion.div
                         className="project-links"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.3 }}
                       >
-                        <a href={project.githubLink} target="_blank" rel="noopener noreferrer" className="project-link github">
+                        <a
+                          href={project.githubLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="project-link github"
+                        >
                           <FaGithub /> Source Code
                         </a>
-                        <a href={project.liveLink} target="_blank" rel="noopener noreferrer" className="project-link demo">
+                        <a
+                          href={project.liveLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="project-link demo"
+                        >
                           <FaExternalLinkAlt /> Live Demo
                         </a>
                       </motion.div>
@@ -270,12 +275,12 @@ const Projects = () => {
                     <span className="category-badge">{project.category}</span>
                   </div>
                   <p>{project.description}</p>
-                  
+
                   <div className="project-features">
                     <h4>Key Features</h4>
                     <div className="features-grid">
                       {project.features.map((feature, idx) => (
-                        <motion.div 
+                        <motion.div
                           key={idx}
                           className="feature-item"
                           initial={{ opacity: 0, x: -20 }}
@@ -291,7 +296,7 @@ const Projects = () => {
 
                   <div className="project-highlights">
                     {project.highlights.map((highlight, idx) => (
-                      <motion.div 
+                      <motion.div
                         key={idx}
                         className="highlight-item"
                         initial={{ opacity: 0, x: -20 }}
@@ -330,7 +335,7 @@ const Projects = () => {
 
       <AnimatePresence>
         {isDetailView && selectedProject && (
-          <motion.div 
+          <motion.div
             className="project-detail-modal"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
