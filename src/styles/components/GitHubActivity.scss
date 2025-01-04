@@ -1,0 +1,1016 @@
+.github-section {
+  padding: 6rem 0;
+  background-color: rgba(37, 99, 235, 0.03);
+
+  &.dark-theme {
+    background-color: rgba(37, 99, 235, 0.05);
+  }
+}
+
+.github-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.contributions-graph {
+  background-color: var(--background-light);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  margin-bottom: 3rem;
+  overflow-x: auto;
+
+  &.dark-theme {
+    background-color: var(--background-dark);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  .contributions-img {
+    width: 100%;
+    height: auto;
+    min-width: 730px;
+  }
+}
+
+.featured-repos {
+  .github-activity {
+    padding: 5rem 0;
+    background: var(--background-dark);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+
+    &.up {
+      .repository-card {
+        transform: translateY(-10px);
+        transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+    }
+
+    &.down {
+      .repository-card {
+        transform: translateY(10px);
+        transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(
+        circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(var(--primary-rgb), 0.08) 0%,
+        transparent 60%
+      );
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      opacity: 0.5;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+      perspective: 1000px;
+
+      h2 {
+        font-size: 2.5rem;
+        color: var(--text-light);
+        margin-bottom: 1rem;
+        background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        position: relative;
+        transform-style: preserve-3d;
+        
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -10px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 60px;
+          height: 3px;
+          background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+          border-radius: 2px;
+          transition: width 0.3s ease;
+        }
+
+        &:hover::after {
+          width: 120px;
+        }
+      }
+
+      p {
+        color: var(--text-light);
+        font-size: 1.1rem;
+        max-width: 600px;
+        margin: 1rem auto 0;
+        line-height: 1.6;
+        opacity: 0.8;
+        transform-style: preserve-3d;
+      }
+    }
+
+    .repositories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      perspective: 2000px;
+    }
+
+    .repository-card {
+      background: rgba(30, 30, 30, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transform-style: preserve-3d;
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        transition: opacity 0.4s ease;
+      }
+
+      &::before {
+        background: linear-gradient(
+          135deg,
+          rgba(var(--primary-rgb), 0.1),
+          rgba(var(--accent-rgb), 0.1)
+        );
+        opacity: 0;
+      }
+
+      &::after {
+        background: radial-gradient(
+          circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+          rgba(var(--primary-rgb), 0.1) 0%,
+          transparent 60%
+        );
+        opacity: 0;
+        z-index: 1;
+      }
+
+      &:hover {
+        transform: translateY(-5px) scale(1.02);
+        border-color: rgba(var(--primary-rgb), 0.3);
+        background: rgba(40, 40, 40, 0.6);
+
+        &::before {
+          opacity: 1;
+        }
+
+        &::after {
+          opacity: 1;
+        }
+
+        .repository-title {
+          color: var(--primary-color);
+          transform: translateZ(20px);
+        }
+
+        .repository-icon {
+          transform: translateZ(30px) rotate(15deg);
+        }
+
+        .repository-description {
+          transform: translateZ(10px);
+        }
+
+        .repository-topics .topic {
+          transform: translateZ(15px);
+        }
+
+        .stats-item {
+          transform: translateZ(20px);
+        }
+      }
+
+      .repository-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1rem;
+        transform-style: preserve-3d;
+      }
+
+      .repository-icon {
+        font-size: 1.5rem;
+        color: var(--primary-color);
+        background: rgba(var(--primary-rgb), 0.15);
+        padding: 0.5rem;
+        border-radius: 12px;
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        transform-style: preserve-3d;
+      }
+
+      .repository-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: var(--text-light);
+        margin-bottom: 0.5rem;
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        transform-style: preserve-3d;
+      }
+
+      .repository-description {
+        color: var(--text-light);
+        opacity: 0.7;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+        transition: all 0.4s ease;
+        transform-style: preserve-3d;
+      }
+
+      .repository-topics {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin: 1rem 0;
+        transform-style: preserve-3d;
+
+        .topic {
+          background: rgba(var(--primary-rgb), 0.15);
+          color: var(--primary-color);
+          padding: 0.25rem 0.75rem;
+          border-radius: 20px;
+          font-size: 0.8rem;
+          transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+          transform-style: preserve-3d;
+
+          &:hover {
+            background: var(--primary-color);
+            color: var(--background-dark);
+            transform: translateZ(30px) scale(1.1);
+          }
+        }
+      }
+
+      .repository-stats {
+        display: flex;
+        gap: 1.5rem;
+        margin-top: auto;
+        transform-style: preserve-3d;
+
+        .stats-item {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          color: var(--text-light);
+          opacity: 0.7;
+          font-size: 0.9rem;
+          transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+          transform-style: preserve-3d;
+
+          svg {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+          }
+
+          &:hover {
+            color: var(--primary-color);
+            opacity: 1;
+            transform: translateZ(30px);
+          }
+        }
+      }
+    }
+
+    @media (max-width: 768px) {
+      padding: 4rem 0;
+
+      .section-title {
+        h2 {
+          font-size: 2rem;
+        }
+
+        p {
+          font-size: 1rem;
+          padding: 0 1rem;
+        }
+      }
+
+      .repositories-grid {
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
+      }
+
+      .repository-card {
+        padding: 1.25rem;
+
+        .repository-title {
+          font-size: 1.1rem;
+        }
+
+        .repository-description {
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+}
+
+.repos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.repo-card {
+  background-color: var(--background-light);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.3s ease;
+
+  &.dark-theme {
+    background-color: var(--background-dark);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  h4 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+  }
+
+  p {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    color: var(--text-light);
+
+    &.dark-theme {
+      color: var(--text-dark);
+    }
+  }
+}
+
+.repo-stats {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.9rem;
+  color: var(--text-light);
+
+  &.dark-theme {
+    color: var(--text-dark);
+  }
+
+  span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}
+
+.language {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.language-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+  .contributions-graph {
+    padding: 1rem;
+    margin: 0 -1rem 2rem -1rem;
+    border-radius: 0;
+  }
+
+  .repos-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.github-activity {
+  padding: 6rem 0;
+  background: linear-gradient(180deg, var(--background-alt) 0%, var(--background-light) 100%);
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 20% 30%, rgba(var(--primary-rgb), 0.05) 0%, transparent 70%),
+      radial-gradient(circle at 80% 70%, rgba(var(--secondary-rgb), 0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      border-radius: 2px;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(120deg, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+
+    .section-subtitle {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      opacity: 0.8;
+    }
+  }
+
+  .activity-filters {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    padding: 0 2rem;
+    flex-wrap: wrap;
+
+    .filter-btn {
+      background: rgba(var(--card-background-rgb), 0.5);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(var(--primary-rgb), 0.1);
+      color: var(--text-primary);
+      padding: 0.75rem 1.5rem;
+      border-radius: 2rem;
+      cursor: pointer;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+      svg {
+        font-size: 1rem;
+      }
+
+      &:hover {
+        background: rgba(var(--primary-rgb), 0.1);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(var(--primary-rgb), 0.2);
+      }
+
+      &.active {
+        background: linear-gradient(120deg, var(--primary-color), var(--secondary-color));
+        color: white;
+        border-color: transparent;
+        box-shadow: 0 4px 15px rgba(var(--primary-rgb), 0.3);
+      }
+    }
+  }
+
+  .activity-timeline {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .activity-card {
+    background: rgba(var(--card-background-rgb), 0.5);
+    backdrop-filter: blur(10px);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    gap: 1.5rem;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 1rem;
+      padding: 2px;
+      background: linear-gradient(120deg, var(--primary-color), var(--secondary-color));
+      -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+
+      &::before {
+        opacity: 1;
+      }
+
+      .view-link {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .activity-icon {
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 3rem;
+      height: 3rem;
+      background: rgba(var(--primary-rgb), 0.1);
+      border-radius: 1rem;
+      flex-shrink: 0;
+    }
+
+    .activity-content {
+      flex: 1;
+
+      .activity-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.75rem;
+
+        .repo-name {
+          font-size: 1.1rem;
+          color: var(--text-primary);
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          margin: 0;
+
+          .repo-icon {
+            color: var(--primary-color);
+            font-size: 1rem;
+          }
+        }
+
+        .activity-date {
+          font-size: 0.85rem;
+          color: var(--text-secondary);
+        }
+      }
+    }
+  }
+
+  .commit-details, .pr-details, .star-details {
+    .commit-message, .pr-title, .repo-description {
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      margin-bottom: 0.75rem;
+      line-height: 1.5;
+    }
+
+    .commit-stats, .pr-stats, .star-stats {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+
+      span {
+        display: flex;
+        align-items: center;
+        gap: 0.35rem;
+
+        svg {
+          font-size: 0.9rem;
+        }
+      }
+
+      .branch {
+        color: var(--primary-color);
+      }
+
+      .additions {
+        color: var(--success-color);
+      }
+
+      .deletions {
+        color: var(--danger-color);
+      }
+
+      .status {
+        text-transform: capitalize;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .view-link {
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    transform: translate(1rem, -50%);
+    opacity: 0;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(var(--primary-rgb), 0.1);
+    border-radius: 50%;
+
+    &:hover {
+      background: rgba(var(--primary-rgb), 0.2);
+      color: var(--primary-color);
+    }
+  }
+
+  .activity-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+
+    .modal-content {
+      background: var(--background-light);
+      border-radius: 1rem;
+      padding: 2rem;
+      max-width: 600px;
+      width: 100%;
+      max-height: 80vh;
+      overflow-y: auto;
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .activity-filters {
+      padding: 0 1rem;
+      
+      .filter-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+      }
+    }
+
+    .activity-timeline {
+      padding: 0 1rem;
+    }
+
+    .activity-card {
+      flex-direction: column;
+      gap: 1rem;
+      padding: 1rem;
+
+      .activity-icon {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1.25rem;
+      }
+
+      .activity-content {
+        .activity-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.5rem;
+        }
+      }
+
+      .commit-stats, .pr-stats, .star-stats {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+
+      .view-link {
+        position: static;
+        margin-top: 1rem;
+        opacity: 1;
+        transform: none;
+        width: 100%;
+        border-radius: 0.5rem;
+        height: 2.5rem;
+      }
+    }
+  }
+}
+
+.contribution-graph {
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 2.5rem;
+  margin-bottom: 4rem;
+
+  h3 {
+    font-size: 1.5rem;
+    color: var(--text-color);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+
+    .icon {
+      color: var(--primary-color);
+    }
+  }
+
+  .graph-container {
+    overflow-x: auto;
+    padding-bottom: 1rem;
+
+    &::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: rgba(37, 99, 235, 0.05);
+      border-radius: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: var(--primary-color);
+      border-radius: 4px;
+      
+      &:hover {
+        background: rgba(37, 99, 235, 0.3);
+      }
+    }
+
+    .graph-grid {
+      display: grid;
+      grid-template-columns: repeat(52, 1fr);
+      gap: 4px;
+      min-width: max-content;
+
+      .week {
+        display: grid;
+        grid-template-rows: repeat(7, 1fr);
+        gap: 4px;
+
+        .day {
+          width: 12px;
+          height: 12px;
+          border-radius: 3px;
+          background: rgba(37, 99, 235, 0.1);
+          transition: all 0.3s ease;
+          position: relative;
+          cursor: pointer;
+
+          &:hover {
+            transform: scale(1.2);
+
+            .tooltip {
+              opacity: 1;
+              visibility: visible;
+              transform: translateY(-5px);
+            }
+          }
+
+          .tooltip {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(0);
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            pointer-events: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 10;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+
+            &::after {
+              content: '';
+              position: absolute;
+              top: 100%;
+              left: 50%;
+              transform: translateX(-50%);
+              border: 6px solid transparent;
+              border-top-color: rgba(0, 0, 0, 0.9);
+            }
+          }
+
+          // Contribution level colors
+          &.level-0 { background: rgba(37, 99, 235, 0.1); }
+          &.level-1 { background: rgba(37, 99, 235, 0.3); }
+          &.level-2 { background: rgba(37, 99, 235, 0.5); }
+          &.level-3 { background: rgba(37, 99, 235, 0.7); }
+          &.level-4 { background: rgba(37, 99, 235, 0.9); }
+        }
+      }
+    }
+  }
+
+  .graph-legend {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--text-light);
+
+      .color-box {
+        width: 12px;
+        height: 12px;
+        border-radius: 3px;
+
+        &.level-0 { background: rgba(37, 99, 235, 0.1); }
+        &.level-1 { background: rgba(37, 99, 235, 0.3); }
+        &.level-2 { background: rgba(37, 99, 235, 0.5); }
+        &.level-3 { background: rgba(37, 99, 235, 0.7); }
+        &.level-4 { background: rgba(37, 99, 235, 0.9); }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+
+    .graph-container {
+      .graph-grid {
+        gap: 3px;
+
+        .week {
+          gap: 3px;
+
+          .day {
+            width: 10px;
+            height: 10px;
+          }
+        }
+      }
+    }
+
+    .graph-legend {
+      gap: 1rem;
+      margin-top: 1.5rem;
+      justify-content: flex-start;
+      padding: 0 1rem;
+
+      .legend-item {
+        font-size: 0.8rem;
+      }
+    }
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px) rotate(3deg); }
+}
+
+@keyframes loading {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@media (max-width: 768px) {
+  .github-section {
+    padding: 4rem 1rem;
+
+    .section-header {
+      h2 {
+        font-size: 2rem;
+      }
+    }
+
+    .github-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+
+      .stat-item {
+        padding: 0.8rem;
+
+        .icon {
+          font-size: 1.5rem;
+        }
+
+        .value {
+          font-size: 1.2rem;
+        }
+      }
+    }
+
+    .activity-list {
+      .activity-item {
+        padding: 0.8rem;
+
+        .activity-icon {
+          font-size: 1.3rem;
+        }
+
+        .activity-content {
+          .activity-message {
+            font-size: 0.9rem;
+          }
+        }
+      }
+    }
+
+    .contributions-graph {
+      padding: 1rem;
+      margin: 0 -1rem;
+      border-radius: 0;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+
+      &::-webkit-scrollbar {
+        height: 4px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: rgba(37, 99, 235, 0.05);
+        border-radius: 2px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: var(--primary-color);
+        border-radius: 2px;
+      }
+    }
+
+    .repos-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .repo-card {
+      padding: 1.5rem;
+
+      h4 {
+        font-size: 1.2rem;
+      }
+
+      p {
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+      }
+    }
+
+    .repo-stats {
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.85rem;
+    }
+  }
+}

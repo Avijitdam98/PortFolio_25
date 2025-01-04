@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="450" version="1.1" viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+ <rect width="800" height="450" fill="#f0f0f0"/>
+ <rect x="250" y="150" width="300" height="150" fill="#d0d0d0"/>
+ <circle cx="400" cy="225" r="50" fill="#e0e0e0"/>
+ <text x="400" y="235" text-anchor="middle" fill="#808080" font-family="Arial" font-size="24">E-Commerce</text>
+</svg>

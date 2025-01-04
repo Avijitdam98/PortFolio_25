@@ -1,0 +1,50 @@
+.app {
+  min-height: 100vh;
+  background: var(--background-dark);
+  color: var(--text-light);
+  overflow-x: hidden;
+}
+
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--primary-color);
+  transform-origin: 0%;
+  z-index: 1000;
+}
+
+.main-content {
+  section {
+    min-height: 100vh;
+    padding: 5rem 0;
+    position: relative;
+    overflow: hidden;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    will-change: opacity, transform;
+  }
+}
+
+// Smooth scrolling
+html {
+  scroll-behavior: smooth;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: rgba(var(--primary-rgb), 0.1);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+
+    &:hover {
+      background: var(--accent-color);
+    }
+  }
+}

@@ -1,0 +1,74 @@
+// Variables
+:root {
+  --primary-color: #2563eb;
+  --secondary-color: #3b82f6;
+  --background-light: #ffffff;
+  --background-dark: #1a1a1a;
+  --text-light: #374151;
+  --text-dark: #f3f4f6;
+  --transition-speed: 0.3s;
+}
+
+// Base styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  color: var(--text-light);
+  background-color: var(--background-light);
+  transition: background-color var(--transition-speed), color var(--transition-speed);
+
+  &.dark-theme {
+    color: var(--text-dark);
+    background-color: var(--background-dark);
+  }
+}
+
+// Container
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+// Section styles
+section {
+  padding: 4rem 0;
+}
+
+// Typography
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+// Buttons
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  background-color: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  transition: transform var(--transition-speed);
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+// Media Queries
+@media (max-width: 768px) {
+  section {
+    padding: 2rem 0;
+  }
+}
