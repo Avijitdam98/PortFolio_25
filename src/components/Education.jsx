@@ -12,7 +12,6 @@ import {
 import '../styles/components/Education.scss';
 
 const Education = () => {
-  const [activeCard, setActiveCard] = useState(null);
   const [isVisible, setIsVisible] = useState(false);
   const [expandedDetails, setExpandedDetails] = useState({});
   const sectionRef = useRef(null);
@@ -39,38 +38,47 @@ const Education = () => {
     };
   }, []);
 
-  const toggleDetails = index => {
-    setExpandedDetails(prev => ({
-      ...prev,
-      [index]: !prev[index],
-    }));
+  const toggleDetails = (index) => {
+    setExpandedDetails(prev => {
+      const newState = { ...prev };
+      // Close all other cards
+      Object.keys(newState).forEach(key => {
+        if (key !== index.toString()) {
+          newState[key] = false;
+        }
+      });
+      // Toggle the clicked card
+      newState[index] = !prev[index];
+      return newState;
+    });
   };
 
   const educationData = [
     {
-      degree: 'Master of Computer Application (MCA)',
-      institution: 'Brainware University',
-      duration: '2021 - 2023',
-      grade: '8.5 CGPA',
+      degree: 'Bachelor of Technology in Electrical Engineering (BTECH)',
+      institution: 'BP Poddar Institute of Management and Technology, Kolkata',
+      duration: '2019 - 2022',
+      grade: '9.05 CGPA',
       location: 'Kolkata, India',
-      achievements: ['Department Rank Holder', 'Research Paper Publication', 'Best Project Award'],
+      achievements: ['Completed multiple industry-relevant projects and internships'],
       details: [
         'Specialized in Advanced Software Development',
         'Key courses: Advanced Algorithms, Cloud Computing, AI & ML',
         'Research focus on Modern Web Technologies',
       ],
       skills: [
-        'Machine Learning',
+        'Web Development',
         'Cloud Computing',
         'Advanced Algorithms',
+        'Database Management',
         'Software Architecture',
       ],
     },
     {
-      degree: 'Bachelor of Computer Application (BCA)',
-      institution: 'Brainware University',
-      duration: '2018 - 2021',
-      grade: '8.2 CGPA',
+      degree: 'Diploma in Electrcial Engineering (DTE)',
+      institution: 'Kingston Educational Institute',
+      duration: '2016 - 2019',
+      grade: '7.0 CGPA',
       location: 'Kolkata, India',
       achievements: [
         'Academic Excellence Award',
@@ -78,8 +86,8 @@ const Education = () => {
         'Technical Club Lead',
       ],
       details: [
-        'Foundation in Computer Science & Programming',
-        'Core subjects: Data Structures, Database Management, Web Development',
+        'Foundation in Electrical Engineering & Programming',
+        'Core subjects: Electronics,Data Structures, Database Management, Web Development',
         'Participated in multiple coding competitions',
       ],
       skills: [
@@ -110,13 +118,8 @@ const Education = () => {
         <div className="education-timeline" role="list">
           {educationData.map((edu, index) => (
             <div
-              className={`education-card ${activeCard === index ? 'active' : ''} ${expandedDetails[index] ? 'expanded' : ''}`}
+              className={`education-card ${expandedDetails[index] ? 'expanded' : ''}`}
               key={index}
-              onMouseEnter={() => setActiveCard(index)}
-              onMouseLeave={() => setActiveCard(null)}
-              onFocus={() => setActiveCard(index)}
-              onBlur={() => setActiveCard(null)}
-              tabIndex={0}
               role="listitem"
               aria-label={`${edu.degree} at ${edu.institution}`}
             >

@@ -5,32 +5,32 @@ import '../styles/components/Experience.scss';
 
 const experienceData = [
   {
-    role: 'Senior Full Stack Developer',
-    company: 'Tech Company Name',
-    duration: 'Jan 2022 - Present',
+    role: 'Project Engineer',
+    company: 'Wipro Pvt Ltd',
+    duration: 'April 2022 - Jan 2023',
     description: 'Leading development of enterprise-scale web applications.',
     highlight: 'Improved system performance by 40%',
     responsibilities: [
-      'Architected and implemented scalable microservices using Node.js and Python',
-      'Led a team of 5 developers and managed project deliverables',
+      'Collaborated on enterprise-level software development projects',
+      'Implemented robust technical solutions and optimized system performance',
       'Improved application performance by 40% through optimization',
-      'Implemented CI/CD pipelines and automated testing workflows',
+      'Worked closely with cross-functional teams to deliver high-quality software products',
     ],
-    technologies: ['React', 'Node.js', 'Python', 'AWS', 'Docker'],
+    technologies: ['React', 'Node.js', 'Python', 'Astro', 'Docker', 'Next.js'],
   },
   {
-    role: 'Frontend Developer',
-    company: 'Another Company',
-    duration: 'Jun 2020 - Dec 2021',
-    description: 'Developed responsive web applications with modern UI/UX.',
+    role: 'Opcenter Teamcenter Developer Intern',
+    company: 'Bavistech Pvt Ltd',
+    duration: 'Sep 2023 - Apr 2024',
+    description: 'React.js Developer.',
     highlight: 'Built reusable component library',
     responsibilities: [
       'Built reusable component library used across multiple projects',
-      'Implemented responsive designs and animations',
-      'Optimized frontend performance and loading times',
-      'Collaborated with UX team on design implementation',
+      'Developed responsive web applications using React.js',
+      'Implemented Opcenter and Teamcenter solutions',
+      'Gained hands-on experience in modern web development technologies',
     ],
-    technologies: ['React', 'TypeScript', 'SCSS', 'Redux'],
+    technologies: ['React', 'TypeScript', 'SCSS', 'Redux', 'Teamcenter', 'Opcenter', 'PLM', 'OEM'],
   },
 ];
 
@@ -43,6 +43,10 @@ const techWebsites = {
   TypeScript: 'https://typescriptlang.org',
   SCSS: 'https://sass-lang.com',
   Redux: 'https://redux.js.org',
+  Opcenter: 'https://plm.sw.siemens.com/en-US/opcenter/',
+  Teamcenter: 'https://plm.sw.siemens.com/en-US/teamcenter/',
+  PLM: 'https://plm.sw.siemens.com/en-US/',
+  OEM: 'https://www.siemens.com/global/en/products/buildings/hvac/oem.html',
 };
 
 const Experience = () => {
